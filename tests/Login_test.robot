@@ -13,7 +13,7 @@ ${BROWSER_NAME}    chrome
 ${username}        Admin
 ${password}        admin123
 ${INCIGNITO}       False
-${HEADLESS}        False
+${HEADLESS}        True
 
 *** Test Cases ***
 Verify Login With Valid Credentials
