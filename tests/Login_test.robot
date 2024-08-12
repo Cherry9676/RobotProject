@@ -1,10 +1,11 @@
 *** Settings ***
 Resource    ../resources/Locators.robot
 Library     SeleniumLibrary
+Library    Process
 Library     OperatingSystem
 Library     String
 Library     DateTime
-Library     Process
+Library    XML
 
 *** Variables ***
 ${BROWSER_PATH}    ./drivers/chromedriver.exe
@@ -12,8 +13,8 @@ ${URL}    https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
 ${BROWSER_NAME}    chrome
 ${username}        Admin
 ${password}        admin123
-${INCIGNITO}       False
-${HEADLESS}        True
+${INCIGNITO}       True
+${HEADLESS}        False
 
 *** Test Cases ***
 Verify Login With Valid Credentials
@@ -80,6 +81,17 @@ Verify “Forgot your password?” Link
     Sleep    2
     Tear Down
 
+Verify Password zField Masking
+    [Documentation]    Verify that the password entered in the Password field is masked.
+    [Tags]    test006
+    Go To Application
+    Sleep    1
+    Element Should Be Visible    ${PassWord_xpath}
+    Input Password    ${PassWord_xpath}    ${password}
+    ${type_value}=    Get Element Attribute    ${PassWord_xpath}    type
+    Should Be Equal    ${type_value}    password
+    Tear Down
+
 *** Keywords ***
 Go To Application
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
@@ -92,3 +104,8 @@ Go To Application
 
 Tear Down
     Close All Browsers
+
+Enter Valid Credentials
+    [Documentation]    Enters the valid username and password.
+    Input Text    ${UserName_xpath}    ${username}
+    Input Password    ${PassWord_xpath}    ${password}

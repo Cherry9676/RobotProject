@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.2 on win32)" generated="20240811 15:12:59.769" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.11.2 on win32)" generated="20240812 19:20:06.664" rpa="false" schemaversion="3">
 <suite id="s1" name="Login test" source="d:\RobotProject\tests\Login_test.robot">
-<test id="s1-t1" name="Verify Login With Valid Credentials" line="19">
+<test id="s1-t1" name="Login Button Functionality with Enter Key" line="95">
 <kw name="Go To Application">
 <kw name="Evaluate" library="BuiltIn">
 <var>${chrome_options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys, selenium.webdriver</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20240811 15:13:00.293" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x00000185456E2AD0&gt;</msg>
-<status status="PASS" starttime="20240811 15:13:00.291" endtime="20240811 15:13:00.297"/>
+<msg timestamp="20240812 19:20:06.967" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002213B2D1910&gt;</msg>
+<status status="PASS" starttime="20240812 19:20:06.967" endtime="20240812 19:20:06.967"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${INCIGNITO}' == 'True'</arg>
@@ -18,7 +18,14 @@
 <arg>add_argument</arg>
 <arg>--incognito</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20240811 15:13:00.297" endtime="20240811 15:13:00.297"/>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--incognito</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240812 19:20:06.982" endtime="20240812 19:20:06.983"/>
+</kw>
+<status status="PASS" starttime="20240812 19:20:06.967" endtime="20240812 19:20:06.983"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${HEADLESS}' == 'True'</arg>
@@ -27,106 +34,95 @@
 <arg>add_argument</arg>
 <arg>--headless</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20240811 15:13:00.297" endtime="20240811 15:13:00.297"/>
+<status status="PASS" starttime="20240812 19:20:06.983" endtime="20240812 19:20:06.983"/>
 </kw>
 <kw name="Create Webdriver" library="SeleniumLibrary">
 <arg>Chrome</arg>
 <arg>chrome_options=${chrome_options}</arg>
 <arg>executable_path=${BROWSER_PATH}</arg>
 <doc>Creates an instance of Selenium WebDriver.</doc>
-<msg timestamp="20240811 15:13:00.297" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
-<status status="PASS" starttime="20240811 15:13:00.297" endtime="20240811 15:13:01.769"/>
+<msg timestamp="20240812 19:20:06.983" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20240812 19:20:06.983" endtime="20240812 19:20:08.194"/>
 </kw>
 <kw name="Go To" library="SeleniumLibrary">
 <arg>${URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20240811 15:13:01.769" level="INFO">Opening url 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'</msg>
-<status status="PASS" starttime="20240811 15:13:01.769" endtime="20240811 15:13:09.303"/>
+<msg timestamp="20240812 19:20:08.194" level="INFO">Opening url 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'</msg>
+<status status="PASS" starttime="20240812 19:20:08.194" endtime="20240812 19:20:25.627"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20240811 15:13:09.303" endtime="20240811 15:13:09.483"/>
+<status status="PASS" starttime="20240812 19:20:25.627" endtime="20240812 19:20:25.650"/>
 </kw>
 <kw name="Set Browser Implicit Wait" library="SeleniumLibrary">
 <arg>10</arg>
 <doc>Sets the implicit wait value used by Selenium.</doc>
-<status status="PASS" starttime="20240811 15:13:09.483" endtime="20240811 15:13:09.491"/>
+<status status="PASS" starttime="20240812 19:20:25.650" endtime="20240812 19:20:25.650"/>
 </kw>
-<status status="PASS" starttime="20240811 15:13:00.291" endtime="20240811 15:13:09.499"/>
+<status status="PASS" starttime="20240812 19:20:06.967" endtime="20240812 19:20:25.650"/>
 </kw>
+<kw name="Enter Valid Credentials">
+<doc>Enters the valid username and password.</doc>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>${UserName_xpath}</arg>
 <arg>${username}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20240811 15:13:09.511" level="INFO">Typing text 'Admin' into text field 'xpath://input[@placeholder='Username']'.</msg>
-<status status="PASS" starttime="20240811 15:13:09.499" endtime="20240811 15:13:11.795"/>
+<msg timestamp="20240812 19:20:25.650" level="INFO">Typing text 'Admin' into text field 'xpath://input[@placeholder='Username']'.</msg>
+<status status="PASS" starttime="20240812 19:20:25.650" endtime="20240812 19:20:26.264"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
+<kw name="Input Password" library="SeleniumLibrary">
 <arg>${PassWord_xpath}</arg>
 <arg>${password}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20240811 15:13:11.800" level="INFO">Typing text 'admin123' into text field 'xpath://input[@placeholder='Password']'.</msg>
-<status status="PASS" starttime="20240811 15:13:11.797" endtime="20240811 15:13:12.172"/>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20240812 19:20:26.264" level="INFO">Typing password into text field 'xpath://input[@placeholder='Password']'.</msg>
+<msg timestamp="20240812 19:20:26.314" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20240812 19:20:26.364" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20240812 19:20:26.264" endtime="20240812 19:20:26.364"/>
 </kw>
-<kw name="Element Should Be Enabled" library="SeleniumLibrary">
-<arg>${UserName_xpath}</arg>
-<doc>Verifies that element identified by ``locator`` is enabled.</doc>
-<status status="PASS" starttime="20240811 15:13:12.172" endtime="20240811 15:13:12.241"/>
+<status status="PASS" starttime="20240812 19:20:25.650" endtime="20240812 19:20:26.364"/>
 </kw>
-<kw name="Element Should Be Enabled" library="SeleniumLibrary">
-<arg>${PassWord_xpath}</arg>
-<doc>Verifies that element identified by ``locator`` is enabled.</doc>
-<status status="PASS" starttime="20240811 15:13:12.242" endtime="20240811 15:13:12.299"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
+<kw name="Press Key" library="SeleniumLibrary">
 <arg>${LoginButton_xpath}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20240811 15:13:12.301" level="INFO">Clicking button 'xpath://button[@type='submit']'.</msg>
-<status status="PASS" starttime="20240811 15:13:12.299" endtime="20240811 15:13:12.445"/>
+<arg>Enter</arg>
+<doc>*DEPRECATED in SeleniumLibrary 4.0.* use `Press Keys` instead.</doc>
+<msg timestamp="20240812 19:20:26.364" level="WARN">Keyword 'SeleniumLibrary.Press Key' is deprecated. use `Press Keys` instead.</msg>
+<status status="PASS" starttime="20240812 19:20:26.364" endtime="20240812 19:20:26.424"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20240811 15:13:14.454" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20240811 15:13:12.452" endtime="20240811 15:13:14.454"/>
+<msg timestamp="20240812 19:20:28.425" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20240812 19:20:26.425" endtime="20240812 19:20:28.425"/>
 </kw>
 <kw name="Element Should Contain" library="SeleniumLibrary">
 <arg>${Dashboard_Xpath}</arg>
 <arg>Dashboard</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<msg timestamp="20240811 15:13:30.897" level="INFO">Element 'xpath://h6[normalize-space()='Dashboard']' contains text 'Dashboard'.</msg>
-<status status="PASS" starttime="20240811 15:13:14.454" endtime="20240811 15:13:30.897"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>2</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20240811 15:13:32.908" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20240811 15:13:30.905" endtime="20240811 15:13:32.909"/>
+<msg timestamp="20240812 19:20:38.611" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-18.png"&gt;&lt;img src="selenium-screenshot-18.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20240812 19:20:38.611" level="FAIL">Element with locator 'xpath://h6[normalize-space()='Dashboard']' not found.</msg>
+<status status="FAIL" starttime="20240812 19:20:28.425" endtime="20240812 19:20:38.611"/>
 </kw>
 <kw name="Tear Down">
-<kw name="Close All Browsers" library="SeleniumLibrary">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" starttime="20240811 15:13:32.917" endtime="20240811 15:13:39.313"/>
+<status status="NOT RUN" starttime="20240812 19:20:38.611" endtime="20240812 19:20:38.611"/>
 </kw>
-<status status="PASS" starttime="20240811 15:13:32.911" endtime="20240811 15:13:39.313"/>
-</kw>
-<doc>This test case verifies that a user can log in with valid credentials.</doc>
-<tag>test001</tag>
-<status status="PASS" starttime="20240811 15:13:00.288" endtime="20240811 15:13:39.313"/>
+<doc>Verify that the login button can be triggered using the Enter key.</doc>
+<tag>test007</tag>
+<status status="FAIL" starttime="20240812 19:20:06.967" endtime="20240812 19:20:38.611">Element with locator 'xpath://h6[normalize-space()='Dashboard']' not found.</status>
 </test>
-<status status="PASS" starttime="20240811 15:12:59.780" endtime="20240811 15:13:39.323"/>
+<status status="FAIL" starttime="20240812 19:20:06.669" endtime="20240812 19:20:38.611"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">test001</stat>
+<stat pass="0" fail="1" skip="0">test007</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Login test">Login test</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="Login test">Login test</stat>
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20240812 19:20:26.364" level="WARN">Keyword 'SeleniumLibrary.Press Key' is deprecated. use `Press Keys` instead.</msg>
 </errors>
 </robot>
