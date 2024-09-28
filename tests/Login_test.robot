@@ -13,8 +13,8 @@ ${URL}    https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
 ${BROWSER_NAME}    chrome
 ${username}        Admin
 ${password}        admin123
-${INCIGNITO}       True
-${HEADLESS}        False
+${INCIGNITO}       False
+${HEADLESS}        True
 
 *** Test Cases ***
 Verify Login With Valid Credentials
@@ -97,7 +97,7 @@ Go To Application
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Run Keyword If    '${INCIGNITO}' == 'True'    Call Method    ${chrome_options}    add_argument    --incognito
     Run Keyword If    '${HEADLESS}' == 'True'    Call Method    ${chrome_options}    add_argument    --headless
-    Create WebDriver    Chrome    chrome_options=${chrome_options}    executable_path=${BROWSER_PATH}
+    Create WebDriver    Chrome    chrome_options=${chrome_options}
     Go To    ${URL}
     Maximize Browser Window
     Set Browser Implicit Wait    10
